@@ -1,0 +1,24 @@
+{ 
+   "manifest_version": 3,
+   "name":"xlnetsUtils",
+   "description":"Utilidades autenticación XLNETs",
+   "version":"1.0",
+   "icons":{ 
+      "128":"images/uda.png"
+   },
+   "background": {
+	   "service_worker": "background.js"   
+   },
+   "permissions":[ 
+     "unlimitedStorage",
+     "notifications",
+	  "storage",
+	  "activeTab",
+	  "scripting"
+   ],
+   "host_permissions": [
+      "http://*/*",
+      "https://*/*",
+      "file://*/*"
+  ]
+}
