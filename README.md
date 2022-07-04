@@ -4,7 +4,7 @@ Extensión de Chrome con utilidades para la autenticación XLNETs
 Contiene las siguientes utilidades:
 <ol>
   <li>Deshabilita autenticación WIA</li>
-  <li>Realiza el click en el boton de información una vez realiza la autenticación</li>  
+  <li>Realiza el click en el botón de información una vez realiza la autenticación</li>  
 </ol>
 
 Pasos para realizar la instalación:<br><br>
