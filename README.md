@@ -8,7 +8,7 @@ Contiene las siguientes utilidades:
 </ol>
 
 Pasos para realizar la instalación:<br><br>
-1.Descomprimir en el equipo [xlnetsUtils.zip](https://github.com/jalvarez1983/xlnetsUtils/files/9043922/xlnetsUtils.zip)<br>
+1.Descomprimir en el equipo [xlnetsUtils.zip]([xlnetsUtils.zip](https://github.com/jalvarez1983/xlnetsUtils/files/9821317/xlnetsUtils.zip)<br>
 2.Abrir Chrome y poner en la barra de direcciones chrome://extensions<br>
 3.Habilitar el modo desarrolador<br><br>
 ![image](https://user-images.githubusercontent.com/2207608/177275530-652461bb-24b6-4a82-a918-e75bf2da1e13.png)<br><br>
