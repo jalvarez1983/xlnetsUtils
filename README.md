@@ -25,6 +25,17 @@ Extensión de Chrome con utilidades para la autenticación en XLNetS
 5. En el detalle de la extensión activa "Permitir en incognito"
 6. La extensión debería aparecer ahora en tu barra de herramientas.
 
+
+### Edge
+
+1. Descargar y descomprimir la extensión --> [xlnetsUtils.zip](https://github.com/jalvarez1983/xlnetsUtils/files/12395856/xlnetsUtils.zip)
+
+2. Abre Edge y navega a `edge://extensions/`.
+3. Activa el "Modo para desarrolladores" en el panel lateral izquierdo.
+4. Haz clic en "Cargar desempaquetado" y selecciona el directorio descomprimido de la extensión.
+5. En el detalle de la extensión activa "Permitir en InPrivate"
+6. La extensión debería aparecer ahora en tu barra de herramientas.
+
 ## Uso
 
 1. Haz clic en el icono de la extensión para abrir el panel desplegable (no olvides anclar la extensión, de esta manera estará siempre visible)
@@ -33,7 +44,7 @@ Extensión de Chrome con utilidades para la autenticación en XLNetS
 
 ## Desarrollo y Contribuciones
 
-Si estás interesado en mejorar esta extensión o tienes sugerencias, ¡no dudes en hacer un fork y enviar un pull request! Agradecemos cualquier contribución.
+Si estás interesado en mejorar esta extensión o tienes sugerencias, ¡no dudes en hacer un fork y enviar un pull request! Se agradece cualquier contribución.
 
 ## Licencia
 
