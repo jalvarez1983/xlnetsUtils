@@ -1,20 +1,40 @@
 # xlnetsUtils
-Extensión de Chrome con utilidades para la autenticación XLNETs
 
-Contiene las siguientes utilidades:
-<ol>
-  <li>Deshabilita autenticación WIA (en el entorno de desarrollo y pruebas)</li>
-  <li>Realiza el click en el botón de información una vez realiza la autenticación</li>  
-</ol>
+Extensión de Chrome con utilidades para la autenticación en XLNetS
 
-Pasos para realizar la instalación:<br><br>
-1.Descomprimir en el equipo [xlnetsUtils.zip](https://github.com/jalvarez1983/xlnetsUtils/files/9821317/xlnetsUtils.zip)<br>
-2.Abrir Chrome y poner en la barra de direcciones chrome://extensions<br>
-3.Habilitar el modo desarrolador<br><br>
-![image](https://user-images.githubusercontent.com/2207608/177275530-652461bb-24b6-4a82-a918-e75bf2da1e13.png)<br><br>
-4.Pulsar en la opción 'Cargar descomprimida' o 'Cargar extensión sin empaquetar' y seleccionar la carpeta que hemos descomprimido<br><br>
-![image](https://user-images.githubusercontent.com/2207608/177216996-3d9b4c26-fef9-46f9-9f28-8dde0203204e.png)<br><br>
-5.Una vez añadida pulsar en 'Detalles'<br><br>
-![image](https://user-images.githubusercontent.com/2207608/177217224-a8ec4510-47ce-494b-b76c-3e73eaf23484.png)<br><br>
-6.Habilitar la opción 'Permitir en incógnito'<br><br>
-![image](https://user-images.githubusercontent.com/2207608/177217333-9b4ae5ed-de37-45f3-ac8d-073d1df8cf50.png)<br><br>
+![image](https://github.com/jalvarez1983/xlnetsUtils/assets/2207608/c29e2906-355b-4c3c-886e-0de0826262c2)
+
+
+## Características
+
+- Deshabilita autenticación WIA (en el entorno de desarrollo y pruebas)
+- Proporciona una lista de usuarios, almacenados en el localStorage.
+- Posibilidad de añadir usuarios de forma dinámica.
+- Botones para copiar el nombre de usuario en mayúsculas o minúsculas en la página de login de XLNetS.
+- Botón para eliminar usuarios.
+
+## Instalación
+
+### Chrome
+
+1. Descargar y descomprimir la extensión --> [xlnetsUtils.zip](https://github.com/jalvarez1983/xlnetsUtils/files/12395856/xlnetsUtils.zip)
+
+2. Abre Chrome y navega a `chrome://extensions/`.
+3. Activa el modo "Desarrollador" en la esquina superior derecha.
+4. Haz clic en "Cargar extensión sin empaquetar" y selecciona el directorio descomprimido de la extensión.
+5. En el detalle de la extensión activa "Permitir en incognito"
+6. La extensión debería aparecer ahora en tu barra de herramientas.
+
+## Uso
+
+1. Haz clic en el icono de la extensión para abrir el panel desplegable (no olvides anclar la extensión, de esta manera estará siempre visible)
+2. Aquí puedes ver la lista de usuarios, junto con opciones para copiar el nombre en mayúsculas, minúsculas o eliminar el usuario.
+3. Para agregar un nuevo usuario, haz clic en "Añadir usuario", introduce el nombre del nuevo usuario y pulsa "Añadir".
+
+## Desarrollo y Contribuciones
+
+Si estás interesado en mejorar esta extensión o tienes sugerencias, ¡no dudes en hacer un fork y enviar un pull request! Agradecemos cualquier contribución.
+
+## Licencia
+
+[MIT](LICENSE)
