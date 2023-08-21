@@ -1,24 +1,32 @@
-{ 
+{
    "manifest_version": 3,
-   "name":"xlnetsUtils",
-   "description":"Utilidades autenticación XLNETs",
-   "version":"2.0",
-   "icons":{ 
-      "128":"images/uda.png"
+   "name": "xlnetsUtils",
+   "description": "Utilidades autenticación XLNETs",
+   "version": "3.0",
+   "icons": {
+      "128": "images/uda.png"
+   },
+   "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+         "48": "images/uda.png"
+      },
+      "default_width": 500
    },
    "background": {
-	   "service_worker": "background.js"   
+      "service_worker": "background.js"
    },
-   "permissions":[ 
-     "unlimitedStorage",
-     "notifications",
-	  "storage",
-	  "activeTab",
-	  "scripting"
+   "permissions": [
+      "unlimitedStorage",
+      "notifications",
+      "storage",
+      "activeTab",
+      "tabs",
+      "scripting"
    ],
    "host_permissions": [
       "http://*/*",
       "https://*/*",
       "file://*/*"
-  ]
+   ]
 }
