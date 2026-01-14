@@ -2,8 +2,8 @@
 
 Extensión de Chrome con utilidades para la autenticación en XLNetS
 
-![image](https://github.com/jalvarez1983/xlnetsUtils/assets/2207608/c29e2906-355b-4c3c-886e-0de0826262c2)
-
+<img width="600" height="568" alt="image" src="https://github.com/user-attachments/assets/3720ab58-d565-4a6b-84d8-efa1239afc77" />
+e
 
 ## Características
 
@@ -18,7 +18,7 @@ Extensión de Chrome con utilidades para la autenticación en XLNetS
 
 ### Chrome
 
-1. Descargar y descomprimir la extensión --> [xlnetsUtils.zip](https://github.com/jalvarez1983/xlnetsUtils/files/12395856/xlnetsUtils.zip)
+1. Descargar y descomprimir la extensión --> [xlnetsUtils.zip](https://github.com/user-attachments/files/24623106/xlnetsUtils.zip)
 
 2. Abre Chrome y navega a `chrome://extensions/`.
 3. Activa el modo "Desarrollador" en la esquina superior derecha.
@@ -51,3 +51,4 @@ Si estás interesado en mejorar esta extensión o tienes sugerencias, ¡no dudes
 ## Licencia
 
 [MIT](LICENSE)
+
