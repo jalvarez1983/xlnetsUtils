@@ -22,11 +22,12 @@
       "storage",
       "activeTab",
       "tabs",
-      "scripting"
+      "scripting",
+      "storage"
    ],
    "host_permissions": [
       "http://*/*",
       "https://*/*",
       "file://*/*"
-   ]
+   ]   
 }

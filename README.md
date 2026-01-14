@@ -10,8 +10,9 @@ Extensión de Chrome con utilidades para la autenticación en XLNetS
 - Deshabilita autenticación WIA (en el entorno de desarrollo y pruebas)
 - Proporciona una lista de usuarios, almacenados en el localStorage.
 - Posibilidad de añadir usuarios de forma dinámica.
-- Botones para copiar el nombre de usuario en mayúsculas o minúsculas en la página de login de XLNetS.
-- Botón para eliminar usuarios.
+- Botones para insertar usuario y contraseña en mayúsculas o minúsculas en la página de login de XLNetS.
+- Botón para eliminar usuarios con confirmación.
+- Importación y exportación de listado de usuarios en JSON.
 
 ## Instalación
 
@@ -39,7 +40,8 @@ Extensión de Chrome con utilidades para la autenticación en XLNetS
 ## Uso
 
 1. Haz clic en el icono de la extensión para abrir el panel desplegable (no olvides anclar la extensión, de esta manera estará siempre visible)
-2. Aquí puedes ver la lista de usuarios, junto con opciones para copiar el nombre en mayúsculas, minúsculas o eliminar el usuario.
+2. Aquí puedes ver la lista de usuarios, junto con opciones para insertar usuario/contraseña en mayúsculas, minúsculas o eliminar el usuario con confirmación.
+3. En "Importar / Exportar" puedes descargar el listado en JSON o importar uno existente.
 3. Para agregar un nuevo usuario, haz clic en "Añadir usuario", introduce el nombre del nuevo usuario y pulsa "Añadir".
 
 ## Desarrollo y Contribuciones

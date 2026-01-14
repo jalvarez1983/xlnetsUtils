@@ -1,128 +1,149 @@
-const button_actions = {
+document.addEventListener("DOMContentLoaded", () => {
+  const userList = document.getElementById("userList");
+  const addUserBtn = document.getElementById("addUser");
+  const newUserName = document.getElementById("newUserName");
+  const newPassword = document.getElementById("newPassword");
+  const exportBtn = document.getElementById("exportBtn");
+  const importBtn = document.getElementById("importBtn");
+  const importFile = document.getElementById("importFile");
 
-	addUser : function(){
-		const newUserName = document.getElementById('newUserName').value.trim();	
-		if (newUserName) {
-			let users = JSON.parse(localStorage.getItem('users') || '[]');
-			users.push({ name: newUserName });
-			localStorage.setItem('users', JSON.stringify(users));
-			populateUserList(users);
-			document.getElementById('newUserName').value = '';
-			document.getElementById('userForm').style.display = "none";
-		}
-	},
+  let usuarios = JSON.parse(localStorage.getItem("usuarios") || "[]");
 
-	removeUser : function(users){
-		const index = users.indexOf(user);
-		if (index > -1) {
-			users.splice(index, 1);
-		}
-		localStorage.setItem('users', JSON.stringify(users));			
-		li.remove();		
-	},
+  const guardarUsuarios = () => {
+    localStorage.setItem("usuarios", JSON.stringify(usuarios));
+  };
 
-	insertNameToInput: function(userName) {
-		chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-			const currentTab = tabs[0];
-			console.log(currentTab.id);
-			chrome.scripting.executeScript({
-				target: { tabId: currentTab.id },
-				func: button_actions.setUserPass,
-				args: [userName]
-			});
-		});
-		window.close();
-	},
+  const inyectarUsuario = (username, password) => {
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+      const currentTab = tabs[0];
+      console.log(currentTab.id);
+      chrome.scripting.executeScript({
+        target: { tabId: currentTab.id },
+        func: setUserPass,
+        args: [username, password], // Pasar username y password
+      });
+    });
+    window.close();
+  };
 
-	setUserPass: function(userName) {
-		document.getElementById("idUsuario").value = userName;
-		document.getElementById("idPassword").value = userName;
-		document.getElementsByName("aceptar")[0].click();
-	},
+  const setUserPass = function (username, password) {
+    document.getElementById("idUsuario").value = username; // Setear username
+    document.getElementById("idPassword").value = password; // Setear password
+    document.getElementsByName("aceptar")[0].click(); // Hacer clic en el botón
+  };
 
-	showFormButton: function(){
-		const userForm = document.getElementById('userForm');		
-		if (userForm.style.display === "none" || userForm.style.display === "") {
-			userForm.style.display = "block";
-		} else {
-			userForm.style.display = "none";
-		}
-	}
-}
-
-document.getElementById('addUser').addEventListener('click', button_actions.addUser);
-document.getElementById('showFormButton').addEventListener('click', button_actions.showFormButton);
-
-function loadUsers() {
-	let users = JSON.parse(localStorage.getItem('users') || '[]');
-	// Ordenando alfabéticamente
-	users.sort((a, b) => a.name.localeCompare(b.name));
-	return Promise.resolve(users);
-}
-
-function populateUserList(users) {
-	const userList = document.getElementById('userList');
-	userList.innerHTML = ''; // Limpiar la lista existente
-
-	users.forEach(user => {
-		const li = document.createElement('li');
-		li.className = "mb-2"; // margen inferior
-
-		// Contenedor row para el sistema de rejilla
-		const rowDiv = document.createElement('div');
-		rowDiv.className = "row align-items-center"; // Alineación vertical
-
-		// Columna para el nombre del usuario
-		const nameDiv = document.createElement('div');
-		nameDiv.className = "col-2 username";
-		nameDiv.textContent = user.name.toUpperCase();
-
-		// Columna para los botones
-		const buttonsDiv = document.createElement('div');
-		buttonsDiv.className = "col-10 text-right";
-
-		const buttonUppercase = document.createElement('button');
-		buttonUppercase.textContent = " Mayúsculas";
-		buttonUppercase.className = "btn btn-mayusculas  btn-sm mr-1";
-		buttonUppercase.addEventListener('click', function () {
-			button_actions.insertNameToInput(user.name.toUpperCase());
-		});
-
-		const buttonLowercase = document.createElement('button');
-		buttonLowercase.textContent = " Minúsculas";
-		buttonLowercase.className = "btn btn-minusculas btn-sm";
-		buttonLowercase.addEventListener('click', function () {
-			button_actions.insertNameToInput(user.name.toLowerCase());
-		});
-
-		// Botón para borrar el usuario
-		const deleteButton = document.createElement('button');
-		deleteButton.className = 'btn btn-eliminar btn-sm ml-2 ';
-		deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>'; 	// Añade ícono de Font Awesome
-		deleteButton.addEventListener('click', function () {			
-			button_actions.removeUser(users);
-		});
-
-		const iconUppercase = document.createElement('i');
-		iconUppercase.className = "fas fa-arrow-up";
-		buttonUppercase.prepend(iconUppercase);
-		const iconLowercase = document.createElement('i');
-		iconLowercase.className = "fas fa-arrow-down";
-		buttonLowercase.prepend(iconLowercase);
-
-		buttonsDiv.appendChild(buttonUppercase);
-		buttonsDiv.appendChild(buttonLowercase);
-		buttonsDiv.appendChild(deleteButton);
-
-		rowDiv.appendChild(nameDiv);
-		rowDiv.appendChild(buttonsDiv);
-
-		li.appendChild(rowDiv);
-		userList.appendChild(li);
+  const renderUsuarios = () => {
+	userList.innerHTML = "";
+	usuarios.forEach(({ username, password }, index) => {
+	  const li = document.createElement("li");
+	  li.className = "list-group-item d-flex justify-content-between align-items-center";
+  
+	  // 🅰️ Zona izquierda: nombre
+	  const name = document.createElement("span");
+	  name.className = "username";
+	  name.textContent = username;
+  
+	  // 🅱️ Zona derecha: acciones
+	  const actions = document.createElement("div");
+	  actions.className = "d-flex align-items-center gap-1";
+  
+	  const createActionButton = (text, title, transformFn) => {
+		const btn = document.createElement("button");
+		btn.textContent = text;
+		btn.title = title;
+		btn.className = "btn btn-insertar btn-sm mx-1";
+		btn.onclick = () => inyectarUsuario(transformFn(username), transformFn(password));
+		return btn;
+	  };
+  
+	  actions.appendChild(createActionButton("Original", "Original", (u) => u));
+	  actions.appendChild(createActionButton("Mayúsculas", "Mayúsculas", (u) => u.toUpperCase()));
+	  actions.appendChild(createActionButton("Minúsculas", "Minúsculas", (u) => u.toLowerCase()));
+  
+	  const delBtn = document.createElement("button");
+	  delBtn.className = "btn btn-eliminar btn-sm ml-2";
+	  delBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
+	  delBtn.onclick = () => {
+		const confirmed = window.confirm(`¿Eliminar el usuario "${username}"?`);
+		if (!confirmed) return;
+		usuarios.splice(index, 1);
+		guardarUsuarios();
+		renderUsuarios();
+	  };
+  
+	  actions.appendChild(delBtn);
+  
+	  li.appendChild(name);
+	  li.appendChild(actions);
+	  userList.appendChild(li);
 	});
-}
+  };
+  
 
-// Llenar la lista con los nombres de usuario
-loadUsers().then(users => {
-	populateUserList(users);
+  addUserBtn.addEventListener("click", () => {
+    const username = newUserName.value.trim();
+    const password = newPassword.value.trim();
+    if (!username || !password) return;
+
+    usuarios.push({ username, password });
+    guardarUsuarios();
+    renderUsuarios();
+
+    newUserName.value = "";
+    newPassword.value = "";
+  });
+
+  exportBtn.onclick = () => {
+    const dataStr = JSON.stringify(usuarios, null, 2);
+    const blob = new Blob([dataStr], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "usuarios.json";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  };
+
+  importBtn.onclick = () => {
+	importFile.click();
+  };
+
+  importFile.addEventListener("change", () => {
+	const file = importFile.files[0];
+	if (!file) return;
+  
+	const reader = new FileReader();
+	reader.onload = (e) => {
+	  try {
+		const imported = JSON.parse(e.target.result);
+		if (!Array.isArray(imported)) throw new Error("Formato incorrecto");
+		for (const user of imported) {
+		  if (typeof user.username !== "string" || typeof user.password !== "string") {
+			throw new Error("Estructura inválida");
+		  }
+		}
+		usuarios = imported;
+		guardarUsuarios();
+		renderUsuarios();
+		alert("Importado correctamente");
+		importFile.value = ""; // reset input
+	  } catch (err) {
+		alert("Error al importar: " + err.message);
+	  }
+	};
+	reader.readAsText(file);
+  });
+
+  renderUsuarios();
+
+  document.getElementById("toggleAddUser").addEventListener("click", () => {
+	const form = document.getElementById("userForm");
+	form.style.display = form.style.display === "none" ? "block" : "none";
+  });
+  
+  document.getElementById("toggleImportExport").addEventListener("click", () => {
+	const section = document.getElementById("importExportSection");
+	section.style.display = section.style.display === "none" ? "block" : "none";
+  });
 });
